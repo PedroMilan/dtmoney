@@ -4,7 +4,7 @@ import { Container } from "./styles";
 
 export function TransactionTable() {
   useEffect(() => {
-    api.get("transactions").then((data) => console.log(data));
+    api.get("/transactions").then((response) => console.log(response.data));
   }, []);
 
   return (
@@ -21,7 +21,7 @@ export function TransactionTable() {
         <tbody>
           <tr>
             <td>Desenvolvimento de website</td>
-            <td className="entrada">R$12.000</td>
+            <td className="entrada">R$15.000</td>
             <td>Desenvolvimento</td>
             <td>20/01/2022</td>
           </tr>
