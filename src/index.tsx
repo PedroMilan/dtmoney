@@ -13,9 +13,9 @@ createServer({
       transactions: [
         {
           id: 1,
-          title: "Renda",
+          title: "Aluguel",
           type: "withdraw",
-          category: "Renda",
+          category: "Aluguel",
           amount: 1000,
           createdAt: new Date("2022-02-01 01:00:00"),
         },
