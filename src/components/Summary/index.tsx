@@ -1,12 +1,11 @@
-import React, { useContext } from "react";
 import { Container } from "./styles";
 import entradaImg from "../../assets/entrada.svg";
 import saidaImg from "../../assets/saida.svg";
 import totalImg from "../../assets/total.svg";
-import { TransactionsContext } from "../../TransactionsContext";
+import { useTransactions } from "../../hooks/useTransactions";
 
 export function Summary() {
-  const { transactions } = useContext(TransactionsContext);
+  const { transactions } = useTransactions();
 
   const summary = transactions.reduce(
     (acc, transaction) => {
@@ -34,7 +33,12 @@ export function Summary() {
           <p>Entradas</p>
           <img src={entradaImg} alt="entrada" />
         </header>
-        <strong>{summary.deposits}R$</strong>
+        <strong>
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.deposits)}
+        </strong>
       </div>
 
       <div>
@@ -42,7 +46,13 @@ export function Summary() {
           <p>Saídas</p>
           <img src={saidaImg} alt="saida" />
         </header>
-        <strong>-{summary.withdraws}R$</strong>
+        <strong>
+          -
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.withdraws)}
+        </strong>
       </div>
 
       <div className="highlight-background">
@@ -50,7 +60,12 @@ export function Summary() {
           <p>Total</p>
           <img src={totalImg} alt="total" />
         </header>
-        <strong>{summary.total}R$</strong>
+        <strong>
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.total)}
+        </strong>
       </div>
     </Container>
   );
